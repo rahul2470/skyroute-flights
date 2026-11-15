@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Get assistance with domestic flight enquiries across India. Call 8058701649 for flight options and booking assistance.">
+<title>Domestic Flight Booking Assistance</title>
+
+<style>
+:root {
+  --navy: #10213b;
+  --blue: #1769e0;
+  --blue-dark: #0d50b8;
+  --ink: #18243a;
+  --muted: #65738a;
+  --line: #e7edf5;
+  --surface: #f5f8fc;
+  --white: #fff;
+  --green: #138451;
+  --shadow: 0 18px 55px rgba(16,33,59,.11);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--ink);
+  background: white;
+  line-height: 1.55;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container {
+  width: min(1160px, calc(100% - 40px));
+  margin: auto;
+}
+
+.topbar {
+  background: var(--navy);
+  color: #dce7f7;
+  font-size: 13px;
+  padding: 9px 0;
+}
+
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+header {
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+}
+
+.nav {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 800;
+  font-size: 19px;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: var(--blue);
+  font-size: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  color: #526078;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-call, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 19px;
+  background: var(--blue);
+  color: white;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(23,105,224,.2);
+  transition: .2s;
+}
+
+.nav-call:hover, .btn:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(115deg,#f3f8ff,#eef5ff 52%,#e2efff);
+  padding: 76px 0 82px;
+}
+
+.hero:before {
+  content: "";
+  position: absolute;
+  width: 540px;
+  height: 540px;
+  border: 1px solid rgba(23,105,224,.12);
+  border-radius: 50%;
+  right: -150px;
+  top: -220px;
+  box-shadow: 0 0 0 55px rgba(23,105,224,.035),
+              0 0 0 110px rgba(23,105,224,.025);
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 55px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 30px;
+  background: #e2efff;
+  color: #1458b5;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 20px 0 18px;
+  max-width: 650px;
+  color: var(--navy);
+  font-size: clamp(38px,5.2vw,62px);
+  line-height: 1.06;
+  letter-spacing: -2.7px;
+}
+
+h1 span { color: var(--blue); }
+
+.hero-copy {
+  max-width: 560px;
+  color: #586982;
+  font-size: 17px;
+  margin: 0 0 28px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.btn {
+  padding: 16px 23px;
+  font-size: 15px;
+  border-radius: 13px;
+}
+
+.btn .phone { font-size: 19px; }
+
+.trust-note {
+  margin-top: 17px;
+  font-size: 12px;
+  color: #738198;
+}
+
+.flight-card {
+  position: relative;
+  background: white;
+  padding: 28px;
+  border: 1px solid #e6edf7;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  transform: rotate(1deg);
+}
+
+.flight-card:after {
+  content: "✈";
+  position: absolute;
+  right: 24px;
+  top: -32px;
+  color: #8bb9f5;
+  font-size: 48px;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.card-head strong {
+  color: var(--navy);
+  font-size: 17px;
+}
+
+.live {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  background: #e8f7ef;
+  padding: 6px 9px;
+  border-radius: 20px;
+}
+
+.route {
+  display: grid;
+  grid-template-columns: 1fr 50px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.airport small {
+  display: block;
+  color: #8995a8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .7px;
+}
+
+.airport b {
+  display: block;
+  color: var(--navy);
+  font-size: 29px;
+}
+
+.airport span {
+  color: #69778d;
+  font-size: 12px;
+}
+
+.route-line {
+  text-align: center;
+  color: var(--blue);
+  font-size: 23px;
+  position: relative;
+}
+
+.route-line:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 1px dashed #b8cbe5;
+}
+
+.route-line span {
+  position: relative;
+  background: white;
+  padding: 0 5px;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 19px;
+  color: #738198;
+  font-size: 12px;
+}
+
+.card-bottom b {
+  display: block;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.call-strip {
+  background: var(--navy);
+  color: white;
+  padding: 23px 0;
+}
+
+.strip-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.strip-inner strong { font-size: 18px; }
+
+.strip-inner p {
+  margin: 3px 0 0;
+  color: #b9c8dd;
+  font-size: 13px;
+}
+
+.strip-inner .btn {
+  background: white;
+  color: var(--navy);
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+section { padding: 76px 0; }
+
+.section-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 42px;
+}
+
+.section-heading h2 {
+  color: var(--navy);
+  font-size: clamp(28px,3.5vw,40px);
+  letter-spacing: -1.2px;
+  line-height: 1.15;
+  margin: 12px 0;
+}
+
+.section-heading p { color: var(--muted); }
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.feature {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 25px;
+  background: white;
+}
+
+.feature-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: #edf4ff;
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+  margin-bottom: 18px;
+}
+
+.feature h3 {
+  margin: 0 0 8px;
+  color: var(--navy);
+  font-size: 17px;
+}
+
+.feature p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.how { background: var(--surface); }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 28px;
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  padding: 4px 8px 4px 65px;
+}
+
+.step:before {
+  counter-increment: step;
+  content: "0" counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: white;
+  color: var(--blue);
+  font-weight: 850;
+  box-shadow: 0 5px 18px rgba(16,33,59,.07);
+}
+
+.step h3 {
+  margin: 0 0 7px;
+  color: var(--navy);
+  font-size: 16px;
+}
+
+.step p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: auto;
+}
+
+details {
+  border-bottom: 1px solid var(--line);
+  padding: 19px 4px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 750;
+  color: var(--navy);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+summary:after {
+  content: "+";
+  color: var(--blue);
+  font-size: 21px;
+}
+
+details[open] summary:after { content: "−"; }
+
+details p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 12px 30px 0 0;
+}
+
+.final-cta {
+  background: linear-gradient(120deg,#145bc0,#1979ee);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.final-cta h2 {
+  font-size: clamp(28px,4vw,42px);
+  margin: 0 0 10px;
+}
+
+.final-cta p {
+  color: #d9e9ff;
+  margin: 0 0 25px;
+}
+
+.final-cta .btn {
+  background: white;
+  color: #145bc0;
+  box-shadow: none;
+}
+
+footer {
+  background: #0c1a30;
+  color: #b5c2d5;
+  padding: 28px 0;
+  font-size: 12px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.disclaimer {
+  max-width: 760px;
+  margin-top: 14px;
+  color: #8798b1;
+  line-height: 1.6;
+}
+
+.mobile-call { display: none; }
+
+@media(max-width:850px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+  .flight-card {
+    max-width: 520px;
+    width: 100%;
+    margin: auto;
+  }
+  .features, .steps { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hero { padding: 58px 0 65px; }
+}
+
+@media(max-width:560px) {
+  .container { width: calc(100% - 30px); }
+  .nav { height: 66px; }
+  .brand { font-size: 16px; }
+  .brand-mark { width: 34px; height: 34px; }
+  .nav-call { padding: 10px 12px; font-size: 12px; }
+  h1 { letter-spacing: -1.7px; }
+  .hero-copy { font-size: 15px; }
+  .flight-card { padding: 21px; }
+  .strip-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .strip-inner .btn { width: 100%; }
+  section { padding: 58px 0; }
+  .mobile-call {
+    display: flex;
+    position: fixed;
+    z-index: 20;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,.25);
+  }
+  footer { padding-bottom: 90px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span>Domestic flight booking assistance across India</span>
+    <span>Speak with a flight support representative</span>
+  </div>
+</div>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#">
+      <span class="brand-mark">✈</span>
+      <span>SkyRoute <span style="color:#1769e0">Flights</span></span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#benefits">Why call us</a>
+      <a href="#process">How it works</a>
+      <a href="#faq">FAQs</a>
+    </nav>
+
+    <a class="nav-call" href="tel:+918058701649">
+      ☎ &nbsp; Call for Flight Help
+    </a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="eyebrow">✦ Domestic flight assistance</div>
+
+      <h1>
+        Your next India trip starts with a
+        <span>simple call.</span>
+      </h1>
+
+      <p class="hero-copy">
+        Looking for a domestic flight? Talk to our team for help
+        checking available routes, comparing flight options and
+        understanding booking details.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn" href="tel:+918058701649">
+          <span class="phone">☎</span>
+          Call Now for Flight Options
+        </a>
+      </div>
+
+      <p class="trust-note">
+        No obligation to book. Flight availability and fares are
+        confirmed at the time of enquiry.
+      </p>
+    </div>
+
+    <div class="flight-card">
+      <div class="card-head">
+        <strong>Explore domestic routes</strong>
+        <span class="live">INDIA</span>
+      </div>
+
+      <div class="route">
+        <div class="airport">
+          <small>FROM</small>
+          <b>DEL</b>
+          <span>New Delhi</span>
+        </div>
+
+        <div class="route-line"><span>✈</span></div>
+
+        <div class="airport" style="text-align:right">
+          <small>TO</small>
+          <b>BOM</b>
+          <span>Mumbai</span>
+        </div>
+      </div>
+
+      <div class="card-bottom">
+        <div>Popular routes<b>Across India</b></div>
+        <div>Travel plans<b>One-way & return</b></div>
+        <div>Support<b>By phone</b></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="call-strip">
+  <div class="container strip-inner">
+    <div>
+      <strong>Need help choosing a domestic flight?</strong>
+      <p>Call and discuss your travel requirements with our team.</p>
+    </div>
+
+    <a class="btn" href="tel:+918058701649">
+      ☎ &nbsp; Speak to Our Team
+    </a>
+  </div>
+</div>
+
+<section id="benefits">
+  <div class="container">
+
+    <div class="section-heading">
+      <div class="eyebrow">A simpler way to plan</div>
+      <h2>Flight assistance, without the guesswork</h2>
+      <p>
+        Get human support while exploring domestic flight options
+        for your journey.
+      </p>
+    </div>
+
+    <div class="features">
+
+      <article class="feature">
+        <div class="feature-icon">⌕</div>
+        <h3>Route & schedule help</h3>
+        <p>
+          Tell us where you are travelling and when. We can help
+          you review relevant route and schedule options.
+        </p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">₹</div>
+        <h3>Fare information</h3>
+        <p>
+          Discuss available fare options, baggage rules and other
+          conditions before making a booking decision.
+        </p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">♧</div>
+        <h3>Personal assistance</h3>
+        <p>
+          Speak to a representative if you need help understanding
+          your travel options or booking process.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="how" id="process">
+  <div class="container">
+
+    <div class="section-heading">
+      <div class="eyebrow">Quick & straightforward</div>
+      <h2>How it works</h2>
+      <p>
+        Start with a call and take the next step when you are comfortable.
+      </p>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <h3>Call our team</h3>
+        <p>
+          Tap the call button and share your travel route and
+          preferred dates.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>Review your options</h3>
+        <p>
+          Discuss available flights, fare details and applicable terms.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>Choose what works</h3>
+        <p>
+          If you wish to proceed, follow the confirmed booking
+          instructions shared by the representative.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+
+    <div class="section-heading">
+      <div class="eyebrow">Good to know</div>
+      <h2>Frequently asked questions</h2>
+    </div>
+
+    <div class="faq-list">
+
+      <details>
+        <summary>Which flights can I enquire about?</summary>
+        <p>
+          You can enquire about domestic air travel within India.
+          Routes, dates and available options are subject to airline
+          schedules and availability.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can I ask about one-way and return journeys?</summary>
+        <p>
+          Yes. Tell the representative whether you need a one-way
+          or return journey, along with your preferred travel dates.
+        </p>
+      </details>
+
+      <details>
+        <summary>Are fares guaranteed on this page?</summary>
+        <p>
+          No. Airfares and seat availability can change. Any fare,
+          taxes, baggage allowance and booking conditions should be
+          confirmed before payment.
+        </p>
+      </details>
+
+      <details>
+        <summary>Is this an airline's official website?</summary>
+        <p>
+          No. This is an independent flight enquiry and assistance
+          landing page, not an airline website. Airline names and
+          trademarks belong to their respective owners.
+        </p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Ready to plan your next trip?</h2>
+  <p>Call now to discuss domestic flight options for your journey.</p>
+
+  <a class="btn" href="tel:+918058701649">
+    ☎ &nbsp; Call for Domestic Flight Assistance
+  </a>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+
+    <div class="footer-inner">
+      <strong style="color:white">SkyRoute Flights</strong>
+      <span>Independent domestic flight enquiry assistance</span>
+      <span>© <span id="year"></span> All rights reserved.</span>
+    </div>
+
+    <p class="disclaimer">
+      This website is not affiliated with, endorsed by, or an official
+      website of any airline. Flight schedules, fares, seat availability,
+      baggage allowances and cancellation rules are determined by the
+      relevant airline and may change. Confirm all details and the final
+      payable amount before booking or payment.
+    </p>
+
+  </div>
+</footer>
+
+<a class="btn mobile-call" href="tel:+918058701649">
+  ☎ &nbsp; Tap to Call for Flight Help
+</a>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
